@@ -1,0 +1,5 @@
+1. build UI for editor
+2. build UI for pages and analytics
+3. build routing and data management
+4. get good UI like vsco image website 
+5. test everything end - to - end
