@@ -1,111 +1,245 @@
 "use client"
-import React from 'react'
-import Nav from '@/components/Nav'
-import Footer from '@/components/Footer'
-import Link from 'next/link'
+import { Button } from "@/components/ui/button"
+import { useAuth } from "@/context/AuthContext"
+import Link from "next/link"
+import { 
+  ArrowRight, 
+  CheckCircle, 
+  Shield, 
+  Zap, 
+  Users, 
+  BarChart3,
+  Star,
+  Globe
+} from "lucide-react"
 
-export default function Home() {
+export default function HomePage() {
+  const { isAuthenticated } = useAuth()
+
   return (
-    <div className='h-screen'>
-      <Nav/>  
-      <div className='h-full w-full' >
-        <div className="hero h-4/5 bg-gradient-to-r from-indigo-500 to-pink-500">
-         <div className="flex items-center justify-center min-h-4/5">
-          <div className="hero-content text-center">
-            <div className="max-w-md">
-              <h1 className="text-5xl text-white font-bold"> Unleash Your Presence </h1>
-              <p className="py-6 text-zinc-200">
-                Drive traffic to all your important links with one powerful page.
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <Globe className="h-8 w-8 text-blue-600 mr-2" />
+              <span className="text-xl font-bold text-gray-900">YourApp</span>
+            </div>
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
+              <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">Pricing</a>
+              <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+            </nav>
+            <div className="flex items-center space-x-4">
+              {isAuthenticated ? (
+                <Link href="/dashboard">
+                  <Button>Go to Dashboard</Button>
+                </Link>
+              ) : (
+                <>
+                  <Link href="/sign-in">
+                    <Button variant="outline">Sign In</Button>
+                  </Link>
+                  <Link href="/sign-up">
+                    <Button>Get Started</Button>
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-20 sm:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
+              Build Something
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"> Amazing</span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              The ultimate platform for modern teams. Streamline your workflow, 
+              collaborate seamlessly, and achieve more together.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {isAuthenticated ? (
+                <Link href="/dashboard">
+                  <Button size="lg" className="text-lg px-8 py-3">
+                    Go to Dashboard
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              ) : (
+                <>
+                  <Link href="/sign-up">
+                    <Button size="lg" className="text-lg px-8 py-3">
+                      Get Started Free
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                  <Link href="/sign-in">
+                    <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+                      Sign In
+                    </Button>
+                  </Link>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Everything you need to succeed
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Powerful features designed to help your team work better, faster, and smarter.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+                <Zap className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Lightning Fast</h3>
+              <p className="text-gray-600">
+                Built with performance in mind. Experience blazing fast load times and smooth interactions.
               </p>
-              <Link href="/sign-up">
-                <button type="button" className ="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
-                  Get Started
-                </button>
-              </Link>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+                <Shield className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Secure & Reliable</h3>
+              <p className="text-gray-600">
+                Enterprise-grade security with 99.9% uptime guarantee. Your data is safe with us.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+                <Users className="h-6 w-6 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Team Collaboration</h3>
+              <p className="text-gray-600">
+                Work together seamlessly with real-time collaboration tools and shared workspaces.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+                <BarChart3 className="h-6 w-6 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Analytics & Insights</h3>
+              <p className="text-gray-600">
+                Get deep insights into your team's performance with advanced analytics and reporting.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                <CheckCircle className="h-6 w-6 text-red-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Easy Integration</h3>
+              <p className="text-gray-600">
+                Connect with your favorite tools and services with our extensive API and integrations.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+                <Star className="h-6 w-6 text-indigo-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">24/7 Support</h3>
+              <p className="text-gray-600">
+                Get help whenever you need it with our dedicated support team and comprehensive documentation.
+              </p>
             </div>
           </div>
         </div>
+      </section>
 
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to get started?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Join thousands of teams already using our platform to achieve their goals.
+          </p>
+          {isAuthenticated ? (
+            <Link href="/dashboard">
+              <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
+                Go to Dashboard
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/sign-up">
+              <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          )}
         </div>
-        <section className="text-gray-600 body-font">
-          <div className="container px-5 py-24 mx-auto flex flex-wrap">
-            <div className="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
-              <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center mb-4">
+                <Globe className="h-8 w-8 text-blue-400 mr-2" />
+                <span className="text-xl font-bold">YourApp</span>
               </div>
-              <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">1</div>
-              <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                <div className="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
-                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-12 h-12" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
-                </div>
-                <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                  <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">Sign up for a TreeLynk account.</h2>
-                  <p className="leading-relaxed">You can sign up for a free TreeLynk account or choose a paid plan that offers additional features.</p>
-                </div>
-              </div>
+              <p className="text-gray-400">
+                Building the future of team collaboration and productivity.
+              </p>
             </div>
-            <div className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
-              <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
-              </div>
-              <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">2</div>
-              <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                <div className="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
-                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-12 h-12" viewBox="0 0 24 24">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                  </svg>
-                </div>
-                <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                  <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">Give your link a title</h2>
-                  <p className="leading-relaxed">The title will appear as a button on your TreeLynk, and the description will appear below the button.</p>
-                </div>
-              </div>
+            <div>
+              <h3 className="font-semibold mb-4">Product</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">API</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Integrations</a></li>
+              </ul>
             </div>
-            <div className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
-              <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
-              </div>
-              <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">3</div>
-              <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                <div className="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
-                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-12 h-12" viewBox="0 0 24 24">
-                    <circle cx="12" cy="5" r="3"></circle>
-                    <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
-                  </svg>
-                </div>
-                <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                  <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">Add your links</h2>
-                  <p className="leading-relaxed">Click on the "Create" button and enter the URL of the website or social media profile you want to link to.</p>
-                </div>
-              </div>
+            <div>
+              <h3 className="font-semibold mb-4">Company</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+              </ul>
             </div>
-            <div className="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
-              <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
-              </div>
-              <div className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">4</div>
-              <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                <div className="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
-                  <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-12 h-12" viewBox="0 0 24 24">
-                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                </div>
-                <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                  <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">Save your changes.</h2>
-                  <p className="leading-relaxed">Once you've added all of your links, click on the "Update" button. Your TreeLynk link is now live and you can start sharing it with your followers.</p>
-                </div>
-              </div>
+            <div>
+              <h3 className="font-semibold mb-4">Support</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Documentation</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Status</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Community</a></li>
+              </ul>
             </div>
           </div>
-        </section>
-
-        <Footer/>
-
-      </div>
-
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 YourApp. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
