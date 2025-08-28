@@ -18,28 +18,26 @@ import {
   Activity
 } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 function DashboardContent() {
   const { user, signout, loading } = useAuth();
-
+  const router = useRouter()
   if (loading) {
     return <LoadingPage />;
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <h1 className="text-xl font-bold text-gray-900">Dashboard</h1>
               </div>
             </div>
 
-            {/* Search */}
             <div className="flex-1 max-w-lg mx-8">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
@@ -51,20 +49,16 @@ function DashboardContent() {
               </div>
             </div>
 
-            {/* Right side */}
             <div className="flex items-center gap-4">
-              {/* Notifications */}
               <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors relative">
                 <Bell className="h-5 w-5" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>
 
-              {/* Settings */}
               <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors">
                 <Settings className="h-5 w-5" />
               </button>
 
-              {/* User menu */}
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
@@ -90,9 +84,7 @@ function DashboardContent() {
         </div>
       </header>
 
-      {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Welcome section */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Welcome back, {user?.name || user?.username}! 👋
@@ -105,8 +97,8 @@ function DashboardContent() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total Users</p>
-                <p className="text-2xl font-bold text-gray-900">1,234</p>
+                <p className="text-sm font-medium text-gray-600">Total Clicks</p>
+                <p className="text-2xl font-bold text-gray-900">0</p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Users className="h-6 w-6 text-blue-600" />
@@ -122,8 +114,8 @@ function DashboardContent() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Active Projects</p>
-                <p className="text-2xl font-bold text-gray-900">56</p>
+                <p className="text-sm font-medium text-gray-600">Active Pages</p>
+                <p className="text-2xl font-bold text-gray-900">0</p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                 <FileText className="h-6 w-6 text-green-600" />
@@ -139,8 +131,8 @@ function DashboardContent() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Revenue</p>
-                <p className="text-2xl font-bold text-gray-900">$12,345</p>
+                <p className="text-sm font-medium text-gray-600">Clicks Today</p>
+                <p className="text-2xl font-bold text-gray-900"> 0 </p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                 <BarChart3 className="h-6 w-6 text-purple-600" />
@@ -156,8 +148,8 @@ function DashboardContent() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Tasks Completed</p>
-                <p className="text-2xl font-bold text-gray-900">89</p>
+                <p className="text-sm font-medium text-gray-600">Clicks yesterday</p>
+                <p className="text-2xl font-bold text-gray-900">0</p>
               </div>
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
                 <Activity className="h-6 w-6 text-orange-600" />
@@ -171,38 +163,30 @@ function DashboardContent() {
           </div>
         </div>
 
-        {/* Quick actions */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Button className="h-12 flex items-center gap-2">
+            <Button 
+              className="h-12 flex items-center gap-2"
+              onClick={() => router.push("/pages")}
+            >
               <Plus className="h-4 w-4" />
-              Create Project
+              Create A Page
             </Button>
             <Button variant="outline" className="h-12 flex items-center gap-2">
               <FileText className="h-4 w-4" />
-              View Reports
-            </Button>
-            <Button variant="outline" className="h-12 flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              Schedule Meeting
-            </Button>
-            <Button variant="outline" className="h-12 flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              Invite Team
+              View Analytics
             </Button>
           </div>
         </div>
 
-        {/* Recent activity */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
           <div className="space-y-4">
             {[
-              { action: "Project Alpha completed", time: "2 hours ago", type: "success" },
-              { action: "New team member joined", time: "4 hours ago", type: "info" },
-              { action: "Monthly report generated", time: "1 day ago", type: "info" },
-              { action: "Client meeting scheduled", time: "2 days ago", type: "warning" },
+              { action: "Profile Page Created", time: "2 hours ago", type: "success" },
+              { action: "Business Page Created", time: "4 hours ago", type: "info" },
+              { action: "Kitchen Page Created", time: "1 day ago", type: "info" },
             ].map((item, index) => (
               <div key={index} className="flex items-center gap-3 p-3 rounded-lg bg-gray-50">
                 <div className={`w-2 h-2 rounded-full ${

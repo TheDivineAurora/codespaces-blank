@@ -4,8 +4,7 @@ import { useRouter } from "next/navigation"
 
 const AuthContext = createContext(null);
 
-// Backend API base URL
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://organic-adventure-9v6qxj669gp2pw75-8000.app.github.dev";
+const API_BASE_URL = process.env.BACKEND_URL
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -13,12 +12,11 @@ export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const router = useRouter();
 
-    // Fetch user data from backend
     const fetchUser = useCallback(async () => {
         try {
             const response = await fetch(`${API_BASE_URL}/auth/me`, {
                 method: 'GET',
-                credentials: 'include' // Include cookies
+                credentials: 'include'
             });
             console.log(response)
             if (response.ok) {
@@ -39,7 +37,6 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    // Check authentication status on app load
     const checkAuthStatus = useCallback(async () => {
         try {
             const success = await fetchUser();
@@ -72,7 +69,6 @@ export const AuthProvider = ({ children }) => {
             
             console.log(response)
             if (response.ok) {
-                // After successful signup, fetch user data
                 const success = await fetchUser();
                 if (success) {
                     router.push('/dashboard');
@@ -104,7 +100,6 @@ export const AuthProvider = ({ children }) => {
             });
             
             if (response.ok) {
-                // After successful signin, fetch user data
                 const success = await fetchUser();
                 if (success) {
                     router.push('/dashboard');
@@ -132,14 +127,12 @@ export const AuthProvider = ({ children }) => {
         } catch (err) {
             console.error("Signout API call failed:", err);
         } finally {
-            // Always clear local state regardless of API call success
             setUser(null);
             setIsAuthenticated(false);
             router.push('/sign-in');
         }
     }
 
-    // Refresh token function (can be called when needed)
     const refreshToken = async () => {
         try {
             const response = await fetch(`${API_BASE_URL}/auth/refresh`, {
@@ -148,11 +141,9 @@ export const AuthProvider = ({ children }) => {
             });
             
             if (response.ok) {
-                // Token refreshed successfully, fetch updated user data
                 await fetchUser();
                 return true;
             } else {
-                // Refresh failed, user needs to login again
                 setUser(null);
                 setIsAuthenticated(false);
                 router.push('/sign-in');

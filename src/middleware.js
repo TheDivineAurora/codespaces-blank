@@ -2,10 +2,9 @@
 import { NextResponse } from "next/server";
 
 export function middleware(req) {
-  // Get the pathname of the request
   // const path = req.nextUrl.pathname;
 
-  // // Define public paths that don't require authentication
+  // Define public paths that don't require authentication
   // const isPublicPath = path === "/sign-in" || path === "/sign-up" || path === "/";
 
   // // Check for authentication cookies (server-side)

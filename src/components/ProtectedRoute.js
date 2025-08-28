@@ -9,18 +9,15 @@ export default function ProtectedRoute({ children }) {
   const router = useRouter()
 
   useEffect(() => {
-    // Only redirect if we're not loading and not authenticated
     if (!loading && !isAuthenticated) {
       router.push('/sign-in')
     }
   }, [loading, isAuthenticated, router])
 
-  // Show loading while checking authentication
   if (loading) {
     return <LoadingPage />
   }
 
-  // Don't render anything if not authenticated
   if (!isAuthenticated) {
     return null
   }

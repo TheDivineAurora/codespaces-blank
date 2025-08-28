@@ -24,11 +24,10 @@ export default function HomePage() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <Globe className="h-8 w-8 text-blue-600 mr-2" />
-              <span className="text-xl font-bold text-gray-900">YourApp</span>
+              <span className="text-xl font-bold text-gray-900">treelynk</span>
             </div>
             <nav className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
-              <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">Pricing</a>
               <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
             </nav>
             <div className="flex items-center space-x-4">
@@ -56,12 +55,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
-              Build Something
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"> Amazing</span>
+              All Your Links,  
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"> One Simple Page</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              The ultimate platform for modern teams. Streamline your workflow, 
-              collaborate seamlessly, and achieve more together.
+              Share everything you do with one link — your socials, projects, and content all in one place.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {isAuthenticated ? (
@@ -96,10 +94,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Everything you need to succeed
+              Features built for creators
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Powerful features designed to help your team work better, faster, and smarter.
+              Treelynk gives you the tools to share, grow, and connect — all through a single, powerful link.
             </p>
           </div>
 
@@ -108,9 +106,9 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
                 <Zap className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Lightning Fast</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Instant Pages</h3>
               <p className="text-gray-600">
-                Built with performance in mind. Experience blazing fast load times and smooth interactions.
+                Create your own Treelynk page in seconds and start sharing immediately.
               </p>
             </div>
 
@@ -120,7 +118,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Secure & Reliable</h3>
               <p className="text-gray-600">
-                Enterprise-grade security with 99.9% uptime guarantee. Your data is safe with us.
+                Your links are safe, always available, and built on a strong foundation of security.
               </p>
             </div>
 
@@ -128,9 +126,9 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
                 <Users className="h-6 w-6 text-purple-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Team Collaboration</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Unlimited Links</h3>
               <p className="text-gray-600">
-                Work together seamlessly with real-time collaboration tools and shared workspaces.
+                Add as many links as you need — socials, projects, portfolios, or products.
               </p>
             </div>
 
@@ -138,9 +136,9 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
                 <BarChart3 className="h-6 w-6 text-orange-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Analytics & Insights</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Analytics</h3>
               <p className="text-gray-600">
-                Get deep insights into your team's performance with advanced analytics and reporting.
+                Track page visits and clicks with simple, built-in analytics.
               </p>
             </div>
 
@@ -148,9 +146,9 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-6">
                 <CheckCircle className="h-6 w-6 text-red-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Easy Integration</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Customizable</h3>
               <p className="text-gray-600">
-                Connect with your favorite tools and services with our extensive API and integrations.
+                Choose themes, colors, and styles to make your page feel truly yours.
               </p>
             </div>
 
@@ -158,9 +156,9 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
                 <Star className="h-6 w-6 text-indigo-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">24/7 Support</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Always Free</h3>
               <p className="text-gray-600">
-                Get help whenever you need it with our dedicated support team and comprehensive documentation.
+                Start for free — upgrade only if you need more advanced features.
               </p>
             </div>
           </div>
@@ -171,10 +169,10 @@ export default function HomePage() {
       <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to get started?
+            Ready to create your Treelynk?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of teams already using our platform to achieve their goals.
+            Join creators, businesses, and communities already sharing everything with one link.
           </p>
           {isAuthenticated ? (
             <Link href="/dashboard">
@@ -186,7 +184,7 @@ export default function HomePage() {
           ) : (
             <Link href="/sign-up">
               <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
-                Start Free Trial
+                Start Free Today
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -201,25 +199,25 @@ export default function HomePage() {
             <div>
               <div className="flex items-center mb-4">
                 <Globe className="h-8 w-8 text-blue-400 mr-2" />
-                <span className="text-xl font-bold">YourApp</span>
+                <span className="text-xl font-bold">treelynk</span>
               </div>
               <p className="text-gray-400">
-                Building the future of team collaboration and productivity.
+                Share everything with one link. Simple, fast, and customizable.
               </p>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Product</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">API</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Integrations</a></li>
+                <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Themes</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Analytics</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Smart Links</a></li>
               </ul>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Company</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
+                <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
@@ -236,7 +234,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 YourApp. All rights reserved.</p>
+            <p>&copy; 2024 treelynk. All rights reserved.</p>
           </div>
         </div>
       </footer>
