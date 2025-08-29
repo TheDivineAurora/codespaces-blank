@@ -89,10 +89,8 @@ function DashboardContent() {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Welcome back, {user?.name || user?.username}! 👋
           </h2>
-          <p className="text-gray-600">Here's what's happening with your account today.</p>
+          <p className="text-gray-600">Heres whats happening with your account today.</p>
         </div>
-
-        {/* Stats cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between">
