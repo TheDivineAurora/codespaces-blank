@@ -34,16 +34,13 @@ export default function SignUpPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 p-4">
       <div className="w-full max-w-md">
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Create account</h1>
           <p className="text-gray-600">Join us and get started today</p>
         </div>
 
-        {/* Sign Up Form */}
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 animate-in">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {/* Full Name Field */}
             <div className="space-y-2">
               <Label htmlFor="name" className="text-sm font-medium text-gray-700">
                 Full Name
@@ -66,7 +63,6 @@ export default function SignUpPage() {
               )}
             </div>
 
-            {/* Username Field */}
             <div className="space-y-2">
               <Label htmlFor="username" className="text-sm font-medium text-gray-700">
                 Username
@@ -89,7 +85,6 @@ export default function SignUpPage() {
               )}
             </div>
 
-            {/* Email Field */}
             <div className="space-y-2">
               <Label htmlFor="email" className="text-sm font-medium text-gray-700">
                 Email address
@@ -142,7 +137,6 @@ export default function SignUpPage() {
               )}
             </div>
 
-            {/* Error Message */}
             {error && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-3">
                 <p className="text-sm text-red-600 flex items-center gap-2">
@@ -152,7 +146,6 @@ export default function SignUpPage() {
               </div>
             )}
 
-            {/* Submit Button */}
             <Button
               type="submit"
               disabled={isSubmitting || loading}
@@ -169,7 +162,6 @@ export default function SignUpPage() {
             </Button>
           </form>
 
-          {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-200" />
@@ -190,7 +182,6 @@ export default function SignUpPage() {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="text-center mt-8">
           <p className="text-sm text-gray-500">
             By creating an account, you agree to our{" "}

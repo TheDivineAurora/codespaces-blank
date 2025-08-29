@@ -115,7 +115,7 @@ export default function Editor({ mode, pageId, onPageCreated, onPageDeleted }) {
     setLoading(true);
     setError(null);
     try {
-      const response = await api.post("/pages/create", { name: pageName });
+      const response = await api.post("/pages/", { name: pageName });
       console.log(response);
       const newPageId = response.data.id;
       setCurrentPageId(newPageId);
@@ -390,7 +390,6 @@ export default function Editor({ mode, pageId, onPageCreated, onPageDeleted }) {
                           </div>
                         </div>
                       ) : (
-                        // Display mode
                         <div className="flex justify-between items-center">
                           <div className="flex-1">
                             <p className="font-medium">{getPlatformLabel(watchedValues.links[index]?.platform)}</p>
@@ -429,43 +428,6 @@ export default function Editor({ mode, pageId, onPageCreated, onPageDeleted }) {
                 </div>
               </div>
             </form>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-lg font-semibold mb-4">Preview</h2>
-            
-            <div className="bg-gray-50 rounded-lg p-6 min-h-[400px]">
-              {/* Page Info */}
-              <div className="text-center mb-8">
-                <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                  {watchedValues.title || "Your Page Title"}
-                </h1>
-                <p className="text-gray-600">
-                  {watchedValues.description || "Your page description will appear here"}
-                </p>
-              </div>
-
-              <div className="space-y-3">
-                {watchedValues.links?.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`block w-full py-3 px-4 rounded-lg text-white font-medium text-center transition-colors ${getPlatformColor(link.platform)}`}
-                  >
-                    {getPlatformLabel(link.platform)}
-                  </a>
-                ))}
-              </div>
-
-              {(!watchedValues.links || watchedValues.links.length === 0) && (
-                <div className="text-center text-gray-500 mt-8">
-                  <p>No links added yet</p>
-                  <p className="text-sm">Add some links to see them here</p>
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,3 @@
-// Utility functions for cookie operations
 export const getCookie = (name) => {
   if (typeof document === 'undefined') return null;
   

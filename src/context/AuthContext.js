@@ -4,8 +4,7 @@ import { useRouter } from "next/navigation"
 
 const AuthContext = createContext(null);
 
-const API_BASE_URL = process.env.BACKEND_URL
-
+const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -67,7 +66,6 @@ export const AuthProvider = ({ children }) => {
                 body: JSON.stringify(formData)
             });
             
-            console.log(response)
             if (response.ok) {
                 const success = await fetchUser();
                 if (success) {
@@ -98,7 +96,6 @@ export const AuthProvider = ({ children }) => {
                 credentials: 'include',
                 body: JSON.stringify(formData)
             });
-            
             if (response.ok) {
                 const success = await fetchUser();
                 if (success) {
